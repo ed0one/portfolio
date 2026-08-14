@@ -1,86 +1,151 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
 import { site } from "@/lib/content";
+import { Reveal } from "@/components/reveal";
+import { Magnetic } from "@/components/magnetic-button";
+import { scrollToSection } from "@/lib/smooth-scroll";
+import { ArrowDown, ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/icons";
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } },
-};
+import type { Variants } from "framer-motion";
 
-const item = {
-  hidden: { opacity: 0, y: 28 },
-  show: {
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 50, rotateX: -25 },
+  visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
-  },
+    rotateX: 0,
+    transition: {
+      duration: 0.8,
+      delay: i * 0.12,
+      ease: "easeOut",
+    },
+  }),
 };
+
 
 export function Hero() {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center px-6 pt-24 sm:px-8">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="flex max-w-3xl flex-col items-center text-center"
-      >
-        <motion.div
-          variants={item}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-black/5 bg-black/[0.03] px-4 py-1.5 text-sm text-zinc-600"
-        >
-          <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-          {site.status}
-        </motion.div>
-
-        <motion.h1
-          variants={item}
-          className="text-5xl font-semibold leading-[1.05] tracking-tight text-zinc-900 sm:text-7xl"
-        >
-          {site.name}
-          <span className="mt-4 block bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 bg-clip-text text-transparent sm:mt-6">
-            {site.tagline}
+    <section
+      id="hero"
+      className="relative min-h-[92vh] flex flex-col justify-center pt-28 pb-16 sm:pt-36 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full"
+    >
+      {/* Top Metadata & Availability Status Bar */}
+      <Reveal delay={0.05}>
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs uppercase tracking-wider font-semibold text-[#111111]/70 mb-6 sm:mb-8">
+          <span className="px-3 py-1.5 rounded-full bg-black/[0.04] border border-black/[0.06] text-[#111111]">
+            / {site.established}
           </span>
-        </motion.h1>
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/[0.04] border border-black/[0.06] text-[#111111]">
+            <MapPin className="h-3 w-3" />
+            {site.location}
+          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 font-medium">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+            </span>
+            <span>{site.status}</span>
+          </div>
+        </div>
+      </Reveal>
 
-        <motion.p
-          variants={item}
-          className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-500 sm:text-xl"
-        >
+      {/* Main Massive Animated Title */}
+      <div className="mb-8 select-none overflow-hidden">
+        <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold uppercase tracking-tight text-[#111111] leading-[0.9] sm:leading-[0.88] flex flex-col">
+          <motion.span
+            custom={0}
+            initial="hidden"
+            animate="visible"
+            variants={wordVariants}
+            className="inline-block origin-bottom"
+          >
+            PRODUCT
+          </motion.span>
+          <motion.span
+            custom={1}
+            initial="hidden"
+            animate="visible"
+            variants={wordVariants}
+            className="inline-block origin-bottom"
+          >
+            ENGINEER
+          </motion.span>
+        </h1>
+      </div>
+
+      {/* Bio / Description */}
+      <Reveal delay={0.2}>
+        <p className="max-w-2xl text-lg sm:text-xl font-normal text-[#111111]/80 leading-relaxed sm:leading-relaxed mb-10">
           {site.intro}
-        </motion.p>
+        </p>
+      </Reveal>
 
-        <motion.div
-          variants={item}
-          className="mt-12 flex flex-col items-center gap-4 sm:flex-row"
-        >
-          <a
-            href="#work"
-            className="group inline-flex items-center gap-2 rounded-full bg-zinc-900 px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-zinc-700"
-          >
-            View my work
-            <ArrowRight
-              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 px-7 py-3.5 text-sm font-medium text-zinc-900 transition-colors duration-300 hover:bg-black/[0.03]"
-          >
-            Get in touch
-          </a>
-        </motion.div>
+      {/* Action CTA Buttons & Social Links with Magnetic Physics */}
+      <Reveal delay={0.25}>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t border-black/[0.06]">
+          {/* Primary Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3">
+            <Magnetic strength={0.2}>
+              <a
+                href="#work"
+                onClick={(e) => scrollToSection(e, "#work")}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#111111] text-[#FAF7F3] text-xs font-bold uppercase tracking-wider hover:bg-[#252525] transition-all duration-300 hover:shadow-lg cursor-pointer active:scale-95"
+              >
+                <span>Explore Projects</span>
+                <ArrowDown className="h-3.5 w-3.5" />
+              </a>
+            </Magnetic>
 
-        <motion.p
-          variants={item}
-          className="mt-20 text-sm text-zinc-400"
-        >
-          {site.location}
-        </motion.p>
-      </motion.div>
+            <Magnetic strength={0.2}>
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, "#contact")}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white border border-black/[0.08] text-[#111111] text-xs font-bold uppercase tracking-wider hover:bg-black/[0.03] transition-all duration-300 hover:shadow-sm cursor-pointer active:scale-95"
+              >
+                <span>Get In Touch</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+            </Magnetic>
+          </div>
+
+          {/* Social Profiles Pills with Magnetic pull */}
+          <div className="flex items-center gap-2">
+            <Magnetic strength={0.35}>
+              <a
+                href={site.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-black/[0.08] text-[#111111] hover:bg-black/[0.04] hover:scale-105 active:scale-95 transition-all duration-200"
+                aria-label="GitHub Profile"
+              >
+                <GithubIcon className="h-4 w-4" />
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.35}>
+              <a
+                href={site.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-black/[0.08] text-[#111111] hover:bg-black/[0.04] hover:scale-105 active:scale-95 transition-all duration-200"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedinIcon className="h-4 w-4" />
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.35}>
+              <a
+                href={`mailto:${site.email}`}
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-white border border-black/[0.08] text-[#111111] hover:bg-black/[0.04] hover:scale-105 active:scale-95 transition-all duration-200"
+                aria-label="Send Email"
+              >
+                <Mail className="h-4 w-4" />
+              </a>
+            </Magnetic>
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
