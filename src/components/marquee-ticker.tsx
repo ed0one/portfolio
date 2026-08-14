@@ -11,7 +11,7 @@ const tickerItems = [
   { text: "100% Type-Safe TypeScript", icon: ShieldCheck },
   { text: "High-Velocity SaaS Delivery", icon: Flame },
   { text: "Embedded & IoT Telemetry", icon: Code2 },
-  { text: "Interactive 3D Experiences", icon: Sparkles },
+  { text: "Design Systems & Tokens", icon: Sparkles },
 ];
 
 export function MarqueeTicker() {

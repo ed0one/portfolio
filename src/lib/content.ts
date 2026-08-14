@@ -10,32 +10,32 @@ export const site = {
   timezone: "EEST (UTC+3)",
   status: "Available for new projects",
   established: "CREATING SINCE 2022",
-  tagline: "Building modern, scalable, and delightful web experiences.",
+  tagline: "Engineering resilient web applications, design systems, and autonomous workflows.",
   heroHeading: "PRODUCT ENGINEER",
   intro:
-    "I’m ed0one, a Product Engineer based in Bucharest, Romania. I focus on turning complex challenges into fast, resilient, and intuitive interfaces. From design systems and full-stack architecture to sub-second performance, I care about every pixel and every millisecond.",
+    "Product Engineer based in Bucharest, Romania. I specialize in building deterministic full-stack platforms, scalable design systems, and high-performance digital products. Focused on strict type contracts, sub-second latency, and uncompromising craft.",
   about: [
-    "Over the past years, I have built and shipped software at the intersection of design, systems engineering, and developer ergonomics. I believe great software is quiet: it works with such reliability and intent that you never have to think about the plumbing.",
-    "My work spans high-performance web applications, robust database architectures with strict security boundaries, design systems with tokenized primitives, and local-first cognitive agent workflows.",
+    "I design and build software at the convergence of product intuition, design system rigor, and full-stack systems engineering. Exceptional software feels effortless to users because the underlying architecture is robust, observable, and strictly typed.",
+    "My work spans high-velocity production web applications, database architectures with row-level security boundaries, design token systems, and local-first associative memory architectures.",
   ],
   principles: [
     {
       number: "01",
-      title: "Sub-Second, Always",
+      title: "Deterministic Performance",
       description:
-        "Performance is not an afterthought or a polish pass; it is a foundational feature. Zero lag, predictable rendering, and instant feedback loops.",
+        "Performance is a foundational feature, not an afterthought. Zero layout shifts, predictable render trees, and sub-second feedback loops built from the ground up.",
     },
     {
       number: "02",
-      title: "One Source of Truth",
+      title: "Strict Data Boundaries",
       description:
-        "Strict schemas, end-to-end type safety, and disciplined architecture. When data contracts are unambiguous, systems scale effortlessly.",
+        "End-to-end type safety, unambiguous contracts, and zero-trust schema validation. Disciplined data models scale effortlessly without runtime surprises.",
     },
     {
       number: "03",
-      title: "Craft in the Micro-Details",
+      title: "Tactile Ergonomics & Craft",
       description:
-        "From keyboard navigation and fluid animations to accessible contrast and thumb-reach zones, the small details compound into exceptional products.",
+        "From fluid keyboard navigation and accessible contrast to tokenized spacing and responsive touch states, micro-details compound into exceptional product feel.",
     },
   ],
   services: [
@@ -43,29 +43,29 @@ export const site = {
       number: "01",
       title: "Design Systems & UI Engineering",
       description:
-        "Architecting cohesive, scalable component libraries with tokenized variables, responsive layouts, and buttery micro-interactions.",
+        "Architecting composable component libraries, design token pipelines, accessible patterns, and crisp micro-interactions that elevate product velocity.",
       tags: ["Next.js", "TailwindCSS", "Framer Motion", "Accessibility", "Design Tokens"],
     },
     {
       number: "02",
-      title: "Full-Stack Web Systems",
+      title: "Full-Stack Web Architecture",
       description:
-        "Developing end-to-end web platforms backed by PostgreSQL, Supabase Row-Level Security, Zod validation, and robust API layers.",
+        "Engineering resilient web platforms backed by PostgreSQL schemas, Supabase Row-Level Security, strict Zod validation, and typed API boundaries.",
       tags: ["TypeScript", "Supabase", "PostgreSQL", "RLS", "Server Actions", "REST APIs"],
     },
     {
       number: "03",
-      title: "Performance & Architecture",
+      title: "Performance & Optimization",
       description:
-        "Optimizing Core Web Vitals, eliminating bundle bloat, and structuring timezone-safe, resilient client-server data flows.",
+        "Eliminating bundle bloat, optimizing Core Web Vitals, structuring edge-ready rendering strategies, and conducting architectural security audits.",
       tags: ["Core Web Vitals", "SSR/SSG", "Edge Runtime", "Zod Strict", "Security Reviews"],
     },
     {
       number: "04",
-      title: "AI Tooling & Cognitive Workflows",
+      title: "Cognitive Systems & Agent Workflows",
       description:
-        "Building local-first knowledge systems, autonomous agent memory pipelines, and tool integrations that multiply engineering leverage.",
-      tags: ["Agentic Workflows", "Graph Memory", "Ars Contexta", "Antigravity", "Markdown Graphs"],
+        "Building local-first associative memory engines, autonomous agent pipelines, and developer tooling that multiply engineering leverage.",
+      tags: ["Agentic Workflows", "Graph Memory", "Local-First", "Knowledge Systems", "Markdown Graphs"],
     },
   ],
   skillsArsenal: [
@@ -116,12 +116,12 @@ export const projects = [
 
   {
     id: "second-brain",
-    name: "Ars Contexta — Second Brain",
+    name: "Context Engine — Second Brain",
     year: "2026",
     category: "AI & Knowledge Systems",
     description:
-      "A local-first associative knowledge engine implementing 4-phase pipelines (reduce, reflect, reweave, verify), title-as-claim semantic traversals, heterarchical memory graphs, and Obsidian vault interoperability.",
-    tags: ["Agentic Systems", "GraphRAG", "Antigravity", "Markdown", "Obsidian"],
+      "A local-first associative memory architecture and knowledge graph engine. Features deterministic 4-stage ingestion pipelines, semantic graph traversals, title-as-claim indexing, and bidirectional markdown vault synchronization.",
+    tags: ["Agentic Systems", "Graph Memory", "Local-First", "Knowledge Graph", "Markdown"],
     gradient: "from-[#10B981] via-[#06B6D4] to-[#3B82F6]",
     accentColor: "#10B981",
     stats: "58 Nodes · 0 Broken Links",
