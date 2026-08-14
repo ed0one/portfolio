@@ -5,7 +5,8 @@ export const contactSchema = z.strictObject({
 		.string()
 		.trim()
 		.min(2, "Please enter your name.")
-		.max(120, "Name must be under 120 characters."),
+		.max(120, "Name must be under 120 characters.")
+		.regex(/^[^\r\n]+$/, "Name must be a single line."),
 	email: z.string().trim().email("Please enter a valid email address."),
 	message: z
 		.string()
