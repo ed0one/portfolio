@@ -65,15 +65,15 @@ export function Projects() {
       </Reveal>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 gap-12 sm:gap-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
         {projects.map((project, index) => (
-          <Reveal key={project.id} delay={index * 0.08} variant="scale">
+          <Reveal key={project.id} delay={index * 0.06} variant="scale">
             <TiltCard
               maxTilt={5}
-              className="group relative bg-white rounded-3xl sm:rounded-[2.5rem] border border-black/[0.06] shadow-[0_4px_25px_rgba(0,0,0,0.03)] overflow-hidden transition-shadow duration-500 hover:shadow-[0_25px_70px_rgba(0,0,0,0.1)]"
+              className="group relative bg-white rounded-2xl sm:rounded-3xl border border-black/[0.06] shadow-[0_4px_25px_rgba(0,0,0,0.03)] overflow-hidden transition-shadow duration-500 hover:shadow-[0_25px_70px_rgba(0,0,0,0.1)]"
             >
               {/* Project Preview Banner / Interactive Visual Image */}
-              <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-[#111111]">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#111111]">
                 {/* Background Image with scroll parallax + zoom on hover */}
                 <ParallaxImage src={project.image} alt={`${project.name} preview`} />
 
@@ -81,80 +81,73 @@ export function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/30 pointer-events-none" />
 
                 {/* Top preview chrome */}
-                <div className="relative z-10 flex items-center justify-between p-6 sm:p-8">
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/15 text-white text-xs font-mono">
+                <div className="relative z-10 flex items-center justify-between p-4 sm:p-5">
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/15 text-white text-[10px] font-mono">
                     <Terminal className="h-3 w-3" />
                     <span>{project.id}</span>
                   </div>
-                  <span className="px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white text-xs font-semibold uppercase tracking-wider">
+                  <span className="px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white text-[10px] font-semibold uppercase tracking-wider">
                     {project.year}
                   </span>
                 </div>
 
                 {/* Bottom Callout & Stats inside image */}
-                <div className="absolute bottom-0 left-0 right-0 z-10 p-6 sm:p-8 flex items-end justify-between">
+                <div className="absolute bottom-0 left-0 right-0 z-10 p-4 sm:p-5 flex items-end justify-between">
                   <div>
-                    <span className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight drop-shadow-md">
+                    <span className="text-lg sm:text-xl font-extrabold text-white tracking-tight drop-shadow-md">
                       {project.name}
                     </span>
-                    <p className="text-xs sm:text-sm font-medium text-white/90 mt-1 drop-shadow">
+                    <p className="text-[11px] sm:text-xs font-medium text-white/90 mt-0.5 drop-shadow">
                       {project.stats}
                     </p>
                   </div>
-                  <div className="hidden sm:flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#111111] shadow-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
-                    <ArrowUpRight className="h-5 w-5" />
+                  <div className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#111111] shadow-xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12 shrink-0">
+                    <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>
               </div>
 
-
               {/* Project Details & Body */}
-              <div className="p-6 sm:p-10">
-                {/* Category & Title & Actions */}
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#111111]/50">
+              <div className="p-5 sm:p-6">
+                {/* Category & Actions */}
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-[#111111]/50">
                     {project.category}
                   </span>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5">
                     {"live" in project && project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#111111] text-[#FAF7F3] hover:bg-[#252525] transition-colors"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#111111] text-[#FAF7F3] hover:bg-[#252525] transition-colors"
                       >
-                        <span>Live Site</span>
-                        <ArrowUpRight className="h-3 w-3" />
+                        <span>Live</span>
+                        <ArrowUpRight className="h-2.5 w-2.5" />
                       </a>
                     )}
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111111] hover:underline"
+                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#111111] hover:underline"
                     >
-                      <GithubIcon className="h-3.5 w-3.5" />
+                      <GithubIcon className="h-3 w-3" />
                       <span>Source</span>
-                      <ArrowUpRight className="h-3 w-3" />
                     </a>
                   </div>
                 </div>
 
-
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111111] mb-4">
-                  {project.name}
-                </h3>
-
-                <p className="text-base text-[#111111]/75 leading-relaxed mb-8 max-w-3xl">
+                <p className="text-sm text-[#111111]/75 leading-relaxed mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
                 {/* Tech Badges */}
-                <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-black/[0.04]">
+                <div className="flex flex-wrap items-center gap-1.5 pt-4 border-t border-black/[0.04]">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 rounded-full text-xs font-semibold bg-black/[0.04] text-[#111111] border border-black/[0.04]"
+                      className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-black/[0.04] text-[#111111] border border-black/[0.04]"
                     >
                       {tag}
                     </span>
@@ -167,7 +160,7 @@ export function Projects() {
 
         {/* Bottom Collaboration Prompt Card */}
         <Reveal delay={0.1}>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-12 rounded-3xl bg-black/[0.03] border border-dashed border-black/[0.12] text-center sm:text-left">
+          <div className="sm:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-12 rounded-3xl bg-black/[0.03] border border-dashed border-black/[0.12] text-center sm:text-left">
             <div>
               <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
                 Have a project or vision in mind?
