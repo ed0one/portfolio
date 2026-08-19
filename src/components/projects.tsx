@@ -20,7 +20,7 @@ function ParallaxImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div ref={ref} className="absolute inset-0 h-full w-full overflow-hidden">
       <motion.img
-        src={src}
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${src}`}
         alt={alt}
         loading="lazy"
         style={{ y }}

@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { site } from "@/lib/content";
+import { contactSchema } from "@/lib/schemas";
 import { Reveal } from "@/components/reveal";
 import { TiltCard } from "@/components/tilt-card";
 import { Check, Copy, Clock, Send, Mail, MapPin } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
+
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 
 
 export default function Contact() {
@@ -40,23 +43,37 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
     setErrorMessage("");
 
+    const parsed = contactSchema.safeParse(form);
+    if (!parsed.success) {
+      setStatus("error");
+      setErrorMessage(parsed.error.issues[0]?.message ?? "Please check your input.");
+      return;
+    }
+
+    if (!FORMSPREE_ID) {
+      setStatus("error");
+      setErrorMessage("Contact form is not configured yet. Please email me directly.");
+      return;
+    }
+
+    setStatus("loading");
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(parsed.data),
       });
 
-      const data = await res.json();
-      if (!res.ok || !data.ok) {
-        setStatus("error");
-        setErrorMessage(data.error || "Failed to send message. Please try again.");
-      } else {
+      if (res.ok) {
         setStatus("success");
         setForm({ name: "", email: "", message: "" });
+      } else {
+        const data = await res.json().catch(() => null);
+        setStatus("error");
+        setErrorMessage(data?.errors?.[0]?.message || "Failed to send message. Please try again.");
       }
     } catch {
       setStatus("error");
