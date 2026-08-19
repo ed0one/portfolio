@@ -10,19 +10,40 @@ import { GithubIcon, LinkedinIcon } from "@/components/icons";
 
 import type { Variants } from "framer-motion";
 
-const wordVariants: Variants = {
-  hidden: { opacity: 0, y: 50, rotateX: -25 },
+const lineVariants: Variants = {
+  hidden: {},
   visible: (i: number) => ({
+    transition: { staggerChildren: 0.03, delayChildren: i * 0.15 },
+  }),
+};
+
+const letterVariants: Variants = {
+  hidden: { opacity: 0, y: 50, rotateX: -60 },
+  visible: {
     opacity: 1,
     y: 0,
     rotateX: 0,
-    transition: {
-      duration: 0.8,
-      delay: i * 0.12,
-      ease: "easeOut",
-    },
-  }),
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
 };
+
+function AnimatedWord({ word, lineIndex }: { word: string; lineIndex: number }) {
+  return (
+    <motion.span
+      custom={lineIndex}
+      initial="hidden"
+      animate="visible"
+      variants={lineVariants}
+      className="inline-block origin-bottom"
+    >
+      {word.split("").map((char, i) => (
+        <motion.span key={i} variants={letterVariants} className="inline-block origin-bottom">
+          {char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
 
 
 export function Hero() {
@@ -32,7 +53,7 @@ export function Hero() {
       className="relative min-h-[92vh] flex flex-col justify-center pt-28 pb-16 sm:pt-36 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full"
     >
       {/* Top Metadata & Availability Status Bar */}
-      <Reveal delay={0.05}>
+      <Reveal delay={0.05} variant="blur">
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs uppercase tracking-wider font-semibold text-[#111111]/70 mb-6 sm:mb-8">
           <span className="px-3 py-1.5 rounded-full bg-black/[0.04] border border-black/[0.06] text-[#111111]">
             / {site.established}
@@ -54,36 +75,20 @@ export function Hero() {
       {/* Main Massive Animated Title */}
       <div className="mb-8 select-none overflow-hidden">
         <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold uppercase tracking-tight text-[#111111] leading-[0.9] sm:leading-[0.88] flex flex-col">
-          <motion.span
-            custom={0}
-            initial="hidden"
-            animate="visible"
-            variants={wordVariants}
-            className="inline-block origin-bottom"
-          >
-            PRODUCT
-          </motion.span>
-          <motion.span
-            custom={1}
-            initial="hidden"
-            animate="visible"
-            variants={wordVariants}
-            className="inline-block origin-bottom"
-          >
-            ENGINEER
-          </motion.span>
+          <AnimatedWord word="PRODUCT" lineIndex={0} />
+          <AnimatedWord word="ENGINEER" lineIndex={1} />
         </h1>
       </div>
 
       {/* Bio / Description */}
-      <Reveal delay={0.2}>
+      <Reveal delay={0.2} variant="blur">
         <p className="max-w-2xl text-lg sm:text-xl font-normal text-[#111111]/80 leading-relaxed sm:leading-relaxed mb-10">
           {site.intro}
         </p>
       </Reveal>
 
       {/* Action CTA Buttons & Social Links with Magnetic Physics */}
-      <Reveal delay={0.25}>
+      <Reveal delay={0.25} variant="blur">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t border-black/[0.06]">
           {/* Primary Action Buttons */}
           <div className="flex flex-wrap items-center gap-3">

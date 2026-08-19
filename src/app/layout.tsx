@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { LenisProvider } from "@/components/lenis-provider";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -56,10 +57,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} scroll-smooth h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#FAF7F3] text-[#111111] font-sans selection:bg-[#111111] selection:text-[#FAF7F3]">
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );

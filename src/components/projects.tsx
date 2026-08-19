@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { projects, site } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
 import { TiltCard } from "@/components/tilt-card";
@@ -7,6 +9,26 @@ import { scrollToSection } from "@/lib/smooth-scroll";
 import { ArrowUpRight, Sparkles, Terminal } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
 
+function ParallaxImage({ src, alt }: { src: string; alt: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+
+  return (
+    <div ref={ref} className="absolute inset-0 h-full w-full overflow-hidden">
+      <motion.img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        style={{ y }}
+        className="absolute inset-0 h-[130%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+      />
+    </div>
+  );
+}
 
 export function Projects() {
   return (
@@ -45,21 +67,15 @@ export function Projects() {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 gap-12 sm:gap-16">
         {projects.map((project, index) => (
-          <Reveal key={project.id} delay={index * 0.08}>
+          <Reveal key={project.id} delay={index * 0.08} variant="scale">
             <TiltCard
               maxTilt={5}
               className="group relative bg-white rounded-3xl sm:rounded-[2.5rem] border border-black/[0.06] shadow-[0_4px_25px_rgba(0,0,0,0.03)] overflow-hidden transition-shadow duration-500 hover:shadow-[0_25px_70px_rgba(0,0,0,0.1)]"
             >
               {/* Project Preview Banner / Interactive Visual Image */}
               <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-[#111111]">
-                {/* Background Image with Zoom on Hover */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={project.image}
-                  alt={`${project.name} preview`}
-                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading="lazy"
-                />
+                {/* Background Image with scroll parallax + zoom on hover */}
+                <ParallaxImage src={project.image} alt={`${project.name} preview`} />
 
                 {/* Ambient vignette & gradient overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/30 pointer-events-none" />

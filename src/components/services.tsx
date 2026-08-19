@@ -34,7 +34,7 @@ export function Services() {
         {site.services.map((service, index) => {
           const Icon = serviceIcons[index % serviceIcons.length];
           return (
-            <Reveal key={service.number} delay={index * 0.08}>
+            <Reveal key={service.number} delay={index * 0.08} variant="scale">
               <TiltCard
                 maxTilt={6}
                 className="group relative flex flex-col justify-between h-full bg-white rounded-3xl p-8 sm:p-10 border border-black/[0.06] shadow-[0_2px_15px_rgba(0,0,0,0.02)] transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
