@@ -3,7 +3,7 @@
 import { site } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
 import { TiltCard } from "@/components/tilt-card";
-import { CheckCircle2, Code2, Compass, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Code2, Compass, GraduationCap, ShieldCheck } from "lucide-react";
 
 
 
@@ -101,6 +101,42 @@ export function About() {
         </div>
       </Reveal>
 
+
+      {/* Education */}
+      <Reveal>
+        <div className="mb-16">
+          <p className="text-xs uppercase font-bold tracking-widest text-[#111111]/60 mb-6">
+            / EDUCATION
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {site.education.map((entry) => (
+              <TiltCard
+                key={entry.school}
+                maxTilt={4}
+                className="bg-white rounded-3xl p-8 border border-black/[0.06] shadow-[0_2px_15px_rgba(0,0,0,0.02)] flex items-start gap-4 transition-shadow duration-300 hover:shadow-[0_15px_40px_rgba(0,0,0,0.06)]"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black/[0.03] text-[#111111]">
+                  <GraduationCap className="h-5 w-5" />
+                </div>
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                    <h3 className="text-base font-bold tracking-tight text-[#111111]">
+                      {entry.school}
+                    </h3>
+                    {entry.inProgress && (
+                      <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-emerald-500/10 text-emerald-800 border border-emerald-500/20">
+                        In Progress
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-[#111111]/70 mb-1">{entry.degree}</p>
+                  <p className="text-xs font-mono text-[#111111]/50">{entry.period}</p>
+                </div>
+              </TiltCard>
+            ))}
+          </div>
+        </div>
+      </Reveal>
 
       {/* Key Metrics / Highlights Bar */}
       <Reveal>

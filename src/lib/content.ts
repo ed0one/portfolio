@@ -13,10 +13,24 @@ export const site = {
   tagline: "Engineering resilient web applications, design systems, and autonomous workflows.",
   heroHeading: "PRODUCT ENGINEER",
   intro:
-    "Product Engineer based in Bucharest, Romania. I specialize in building deterministic full-stack platforms, scalable design systems, and high-performance digital products. Focused on strict type contracts, sub-second latency, and uncompromising craft.",
+    "Product Engineer based in Bucharest, Romania, studying Automation & Computer Science at UTCB. Currently a Software Development Intern at DeviDevs, building deterministic full-stack platforms, scalable design systems, and high-performance digital products. Focused on strict type contracts, sub-second latency, and uncompromising craft.",
   about: [
-    "I design and build software at the convergence of product intuition, design system rigor, and full-stack systems engineering. Exceptional software feels effortless to users because the underlying architecture is robust, observable, and strictly typed.",
+    "As a Software Development Intern at DeviDevs, I led TaskCapture — an AI-powered task manager live in production — building its LLM pipeline, timezone-aware email notifications, and OAuth-based auth flow end to end. Exceptional software feels effortless to users because the underlying architecture is robust, observable, and strictly typed.",
     "My work spans high-velocity production web applications, database architectures with row-level security boundaries, design token systems, and local-first associative memory architectures.",
+  ],
+  education: [
+    {
+      school: "Universitatea Tehnică de Construcții București",
+      degree: "Licentiate Degree, Automatică și Informatică Aplicată",
+      period: "Sep 2023 – Jun 2027",
+      inProgress: true,
+    },
+    {
+      school: 'Colegiul Național "Matei Basarab"',
+      degree: "Mate-Info",
+      period: "Sep 2019 – Jun 2023",
+      inProgress: false,
+    },
   ],
   principles: [
     {
