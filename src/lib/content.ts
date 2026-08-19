@@ -191,6 +191,21 @@ export const projects = [
     featured: false,
   },
   {
+    id: "smart-parking",
+    name: "Smart Parking Management System",
+    year: "2025",
+    category: "Database Systems",
+    description:
+      "Full-stack parking management platform: Oracle PL/SQL schema with triggers and stored procedures behind a Node.js/Express API, backing auth, real-time spot availability, reservations, and subscriptions on a React dashboard.",
+    tags: ["Oracle PL/SQL", "Node.js", "Express", "React"],
+    gradient: "from-[#2563EB] via-[#3B82F6] to-[#F59E0B]",
+    accentColor: "#2563EB",
+    stats: "PL/SQL Triggers · Real-Time Spots",
+    image: "/projects/smart-parking.jpg",
+    github: "https://github.com/ed0one/smart_parking_project",
+    featured: false,
+  },
+  {
     id: "fire-alarm-system",
     name: "Fire Alarm System",
     year: "2026",
