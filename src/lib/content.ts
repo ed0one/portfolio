@@ -190,4 +190,19 @@ export const projects = [
     github: "https://github.com/ed0one/SmartPot_autowatering",
     featured: false,
   },
+  {
+    id: "fire-alarm-system",
+    name: "Fire Alarm System",
+    year: "2026",
+    category: "Embedded & IoT",
+    description:
+      "IoT fire-detection pipeline: ESP32 sensor firmware feeds a Node.js serial bridge with automatic port detection and multi-sensor alarm fusion, pushing real-time alerts to a React + Vite dashboard and Blynk mobile notifications.",
+    tags: ["ESP32", "Node.js", "React", "Vite", "Blynk", "IoT"],
+    gradient: "from-[#EF4444] via-[#F97316] to-[#EAB308]",
+    accentColor: "#EF4444",
+    stats: "Serial Bridge · Alarm Fusion",
+    image: "/projects/fire-alarm-system.jpg",
+    github: "https://github.com/ed0one/fire-alarm-system",
+    featured: false,
+  },
 ] as const;
