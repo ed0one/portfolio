@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "ed0one — Product Engineer",
     description:
       "Crafting digital experiences that feel effortless. Design systems, performance, and product thinking.",
-    url: "https://ed0one.dev",
+    url: "https://ed0one.github.io/portfolio/",
     siteName: "ed0one Portfolio",
     locale: "en_US",
     type: "website",

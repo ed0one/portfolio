@@ -30,7 +30,7 @@ A portfolio positioned on the craft of product engineering: design systems, perf
 - Sections: Work (#work), About (#about), Contact (#contact) with a working contact form (`/api/contact`).
 - Projects are currently placeholders in `src/lib/content.ts` and must be replaced with the owner's real GitHub projects.
 - Real public GitHub repos (no descriptions upstream): `practica_devidevs` (TypeScript), `fire-alarm-system` (JavaScript), `SmartPot_autowatering` (JavaScript), `Python-Snake-Game-with-Pygame` (Python), `Submit-CVs-and-managing-job-applications` (C++), plus profile repo `ed0one`. `MagiskOnWSA` is a fork and excluded.
-- Contact email: hello@ed0one.dev. LinkedIn: linkedin.com/in/ed0one.
+- Contact email: eduard.iliescu.devidevs@gmail.com. LinkedIn: linkedin.com/in/ed0one.
 
 ## Brand Commitments
 

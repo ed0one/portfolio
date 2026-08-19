@@ -2,7 +2,7 @@ export const site = {
   name: "ed0one",
   fullName: "Eduard Iliescu",
   role: "Product Engineer",
-  email: "hello@ed0one.dev",
+  email: "eduard.iliescu.devidevs@gmail.com",
   github: "https://github.com/ed0one",
   linkedin: "https://www.linkedin.com/in/eduard-iliescu-582ab22b4/?locale=en",
   location: "Bucharest, Romania",
